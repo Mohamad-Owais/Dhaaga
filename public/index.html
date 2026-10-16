@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="parchment">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dhaaga — A Thread Between Generations | Oral History Archive</title>
+  <meta name="description" content="Preserve the oral histories and cherished memories of family elders in their mother tongue. Dhaaga transcribes voice with Sarvam Saaras and weaves heirloom story cards in English with Sarvam Translate." />
+  <meta name="theme-color" content="#fbf7ef" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rozha+One&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Atmospheric noise & subtle ambient glow overlays -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#studio">Skip to the recorder</a>
+
+  <!-- Top Announcement Bar / Heritage Banner -->
+  <div class="heritage-banner">
+    <div class="heritage-banner-inner">
+      <span class="heritage-thread-icon">🪡</span>
+      <span>Preserving oral histories across 22 Indian languages — Powered by <strong>Sarvam AI</strong></span>
+      <span class="heritage-badge">Private &amp; Ephemeral</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a class="brand" href="#top" aria-label="Dhaaga — Home">
+        <span class="brand-spool" aria-hidden="true">
+          <svg viewBox="0 0 36 36" width="30" height="30" fill="none">
+            <circle cx="18" cy="18" r="16" stroke="var(--thread-gold)" stroke-width="1.4" stroke-dasharray="3 3"/>
+            <path d="M7 27 C 12 25, 14 11, 20 13 C 25 15, 23 8, 29 7" stroke="var(--terracotta)" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="7" cy="27" r="2.8" fill="var(--terracotta)"/>
+            <circle cx="29" cy="7" r="2.8" fill="var(--thread-gold)"/>
+            <path d="M14 18 C 17 21, 21 23, 27 21" stroke="var(--sage)" stroke-width="1.6" stroke-dasharray="2 2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <span class="brand-name">धागा <span class="brand-latin">Dhaaga</span></span>
+          <span class="brand-tagline">A thread between generations</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" aria-label="Quick links">
+        <a href="#studio" class="nav-link">Studio</a>
+        <a href="#prompts" class="nav-link">Story Prompts</a>
+        <a href="#samples" class="nav-link">Heirloom Gallery</a>
+        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Toggle Candlelight Dark Mode" title="Toggle Candlelight Night Mode">
+          <span class="theme-icon theme-sun" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-moon" aria-hidden="true">🌙</span>
+          <span class="theme-text">Theme</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-spark"></span>
+          <span>Oral Family Archives &bull; Preserved Forever</span>
+        </div>
+
+        <h1 class="hero-title">
+          Every elder holds a library <span class="hero-title-italic">in their voice.</span>
+        </h1>
+
+        <p class="hero-lede">
+          Sit with your grandmother, your grandfather, or your parents. Let them speak in the language of their heart — Hindi, Kashmiri, Urdu, Bengali, Tamil, and beyond. Dhaaga listens gently, transcribes each cadence, and weaves it into an heirloom story card for generations to come.
+        </p>
+
+        <!-- Fast Language Selector Chips (clickable shortcuts) -->
+        <div class="lang-pills-container">
+          <span class="pills-label">Quick select dialect:</span>
+          <div class="lang-chips" id="langChips" role="toolbar" aria-label="Quick language selection">
+            <button type="button" class="lang-chip active" data-lang="hi-IN"><span>हिन्दी</span> Hindi</button>
+            <button type="button" class="lang-chip" data-lang="ks-IN"><span>کٲشُر</span> Kashmiri</button>
+            <button type="button" class="lang-chip" data-lang="ur-IN"><span>اردو</span> Urdu</button>
+            <button type="button" class="lang-chip" data-lang="bn-IN"><span>বাংলা</span> Bengali</button>
+            <button type="button" class="lang-chip" data-lang="pa-IN"><span>ਪੰਜਾਬੀ</span> Punjabi</button>
+            <button type="button" class="lang-chip" data-lang="ta-IN"><span>தமிழ்</span> Tamil</button>
+            <button type="button" class="lang-chip" data-lang="te-IN"><span>తెలుగు</span> Telugu</button>
+            <button type="button" class="lang-chip" data-lang="mr-IN"><span>मराठी</span> Marathi</button>
+            <button type="button" class="lang-chip" data-lang="unknown"><span>✨</span> Auto-detect</button>
+          </div>
+        </div>
+
+        <!-- Trust Badges & Metrics -->
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/></svg>
+            <span>Audio stays private &bull; Never stored</span>
+          </div>
+          <div class="trust-separator">&bull;</div>
+          <div class="trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+            <span>Sarvam Saaras v3 + Sarvam Translate</span>
+          </div>
+          <div class="trust-separator">&bull;</div>
+          <div class="trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v14l4-2 4 2 4-2 4 2V4a2 2 0 00-2-2H5zm0 2h10v11.382l-3-1.5-2 1-2-1-3 1.5V4z" clip-rule="evenodd"/></svg>
+            <span>Printable &amp; Archival PDF cards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio / Recorder Card -->
+      <section class="studio" id="studio" aria-labelledby="studio-title">
+        <div class="recorder-card panel" id="recordStage" data-stage="idle">
+          <!-- Card Decorative Header -->
+          <div class="recorder-header">
+            <div class="card-flair">
+              <span class="flair-dot"></span>
+              <span class="flair-title">Oral Studio</span>
+            </div>
+            <h2 id="studio-title" class="studio-heading">Record a Family Memory</h2>
+            <p class="recorder-sub">Choose their dialect, capture up to 30 seconds of their voice, and weave a timeless card.</p>
+          </div>
+
+          <!-- Studio Tabs: Mic Record vs Upload -->
+          <div class="mode-tabs" role="tablist">
+            <button type="button" class="mode-tab active" id="tabRecord" role="tab" aria-selected="true" aria-controls="panelRecord">
+              <span class="tab-icon">🎙️</span>
+              <span>Record Live Voice</span>
+            </button>
+            <button type="button" class="mode-tab" id="tabUpload" role="tab" aria-selected="false" aria-controls="panelUpload">
+              <span class="tab-icon">📁</span>
+              <span>Upload Voice Note</span>
+            </button>
+          </div>
+
+          <!-- Step 1: Language Selection -->
+          <div class="step step-language">
+            <div class="step-label-row">
+              <label class="step-label" for="language">
+                <span class="step-num" aria-hidden="true">1</span>
+                <span>Speaker's Native Language</span>
+              </label>
+              <span class="step-tag">22 Languages</span>
+            </div>
+            <div class="select-wrap">
+              <div class="select-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <select id="language" name="language" aria-label="Select the language spoken in the memory">
+                <option value="hi-IN">Hindi — हिन्दी (Devanagari)</option>
+                <option value="ks-IN">Kashmiri — کٲشُر / कॉशुर</option>
+                <option value="ur-IN">Urdu — اردو (Nastaliq)</option>
+                <option value="bn-IN">Bengali — বাংলা</option>
+                <option value="ta-IN">Tamil — தமிழ்</option>
+                <option value="te-IN">Telugu — తెలుగు</option>
+                <option value="mr-IN">Marathi — मराठी</option>
+                <option value="gu-IN">Gujarati — ગુજરાતી</option>
+                <option value="kn-IN">Kannada — ಕನ್ನಡ</option>
+                <option value="ml-IN">Malayalam — മലയാളം</option>
+                <option value="pa-IN">Punjabi — ਪੰਜਾਬੀ</option>
+                <option value="od-IN">Odia — ଓଡ଼ିଆ</option>
+                <option value="as-IN">Assamese — অসমীয়া</option>
+                <option value="ne-IN">Nepali — नेपाली</option>
+                <option value="sd-IN">Sindhi — سنڌي</option>
+                <option value="sa-IN">Sanskrit — संस्कृतम्</option>
+                <option value="doi-IN">Dogri — डोगरी</option>
+                <option value="kok-IN">Konkani — कोंकणी</option>
+                <option value="mai-IN">Maithili — मैथिली</option>
+                <option value="sat-IN">Santali — ᱥᱟᱱᱛᱟᱲᱤ</option>
+                <option value="brx-IN">Bodo — बड़ो</option>
+                <option value="mni-IN">Manipuri — মৈতৈলোন্</option>
+                <option value="unknown">Not sure — Let Sarvam Auto-Detect</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6l4 4 4-4"/></svg>
+              </span>
+            </div>
+            <p class="helper">Accurately preserves colloquial idioms, mother tongues, and nuances.</p>
+          </div>
+
+          <!-- Step 2: Capture Stage (Tabbed Panels) -->
+          <div class="step step-capture">
+            <div class="step-label-row">
+              <span class="step-label">
+                <span class="step-num" aria-hidden="true">2</span>
+                <span>Capture the Memory</span>
+              </span>
+              <span class="max-time-pill">Up to 30s</span>
+            </div>
+
+            <!-- Panel 1: Live Microphone Recording -->
+            <div id="panelRecord" class="capture-panel active" role="tabpanel" aria-labelledby="tabRecord">
+              <div class="record-stage">
+                <!-- Visual Canvas Waveform Visualizer -->
+                <div class="visualizer-container">
+                  <canvas id="waveformCanvas" width="400" height="70" class="waveform-canvas" aria-hidden="true"></canvas>
+                  <div class="waveform-fallback" id="waveformFallback" aria-hidden="true">
+                    <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
+                    <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
+                    <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
+                  </div>
+                </div>
+
+                <!-- Record Button with Rippling Ring -->
+                <div class="record-btn-wrapper">
+                  <div class="record-pulse-ring" aria-hidden="true"></div>
+                  <button id="recordBtn" class="record-btn" type="button" aria-pressed="false" aria-describedby="recordHint">
+                    <span class="record-ico" aria-hidden="true">
+                      <!-- Mic Icon -->
+                      <svg class="ico-mic" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                      </svg>
+                      <!-- Stop Icon -->
+                      <svg class="ico-stop" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <rect x="6" y="6" width="12" height="12" rx="2.5" />
+                      </svg>
+                    </span>
+                    <span class="record-label" id="recordLabel">Start recording</span>
+                  </button>
+                </div>
+
+                <!-- Timer & Realtime Status Indicator -->
+                <div class="record-readout">
+                  <span class="timer" id="timer" aria-label="Recording duration">00:00</span>
+                  <span class="record-status" id="recordStatus" role="status" aria-live="polite">
+                    Ready when you are
+                  </span>
+                </div>
+
+                <p class="hint" id="recordHint">Speak naturally near the mic — perfect for an anecdote or memory up to 30 seconds.</p>
+              </div>
+            </div>
+
+            <!-- Panel 2: Audio File Upload -->
+            <div id="panelUpload" class="capture-panel" role="tabpanel" aria-labelledby="tabUpload" hidden>
+              <div class="upload-dropzone" id="dropZone">
+                <input id="audioFile" name="audioFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.ogg,.webm,.opus,.aac,.flac" class="sr-only" />
+                <label for="audioFile" class="upload-dropzone-inner">
+                  <div class="upload-art" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M24 32V14M16 20l8-8 8 8" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M38 30v8a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4v-8" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <span class="upload-title">Choose audio or drag &amp; drop</span>
+                  <span class="upload-subtitle">WhatsApp voice notes, phone voice memos, WAV, MP3, M4A, OGG, WebM (up to 25 MB)</span>
+                </label>
+                <div class="file-name-badge" id="fileName" hidden></div>
+              </div>
+            </div>
+
+            <!-- Audio Preview Player -->
+            <div class="preview-container" id="preview" hidden>
+              <div class="preview-header">
+                <span class="preview-label">Captured Audio Preview</span>
+                <span class="preview-check">&#10003; Ready to weave</span>
+              </div>
+              <div class="custom-audio-bar">
+                <audio id="previewAudio" controls preload="metadata"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Weave CTA & Animated Progress -->
+          <div class="step step-final">
+            <button id="weaveBtn" class="primary-btn" type="button" disabled>
+              <span class="btn-shimmer" aria-hidden="true"></span>
+              <span class="primary-icon" aria-hidden="true">🪡</span>
+              <span class="primary-label">Weave the thread</span>
+              <span class="primary-arrow" aria-hidden="true">
+                <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"/><path d="M11 5l5 5-5 5"/></svg>
+              </span>
+            </button>
+            <p class="weave-hint">Sarvam Saaras captures the speech &bull; Sarvam Translate weaves it into English prose</p>
+
+            <!-- Dynamic Multi-Step Progress Tracker -->
+            <div class="progress-box" id="statusBar" hidden>
+              <div class="progress-track-wrapper">
+                <div class="progress-track-line" id="progressTrackLine"></div>
+              </div>
+              <ol class="progress-steps">
+                <li class="progress-step" id="stepTranscribe">
+                  <div class="p-dot-wrapper">
+                    <span class="p-dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="p-text-col">
+                    <span class="p-title">1. Transcribing Voice</span>
+                    <span class="p-sub">Sarvam Saaras v3 listening in native dialect</span>
+                  </div>
+                </li>
+                <li class="progress-step" id="stepTranslate">
+                  <div class="p-dot-wrapper">
+                    <span class="p-dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="p-text-col">
+                    <span class="p-title">2. Weaving Translation</span>
+                    <span class="p-sub">Sarvam Translate crafting English heirloom prose</span>
+                  </div>
+                </li>
+              </ol>
+              <div class="progress-footer">
+                <span class="spinner-thread" aria-hidden="true"></span>
+                <p class="progress-msg" id="statusText">Working…</p>
+              </div>
+            </div>
+
+            <!-- Friendly Accessible Error Alert -->
+            <div class="error-bar" id="errorBar" role="alert" hidden></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Conversation Starters / Interview Prompts Section -->
+    <section class="prompts-section" id="prompts" aria-labelledby="prompts-heading">
+      <div class="section-badge">Questions to Ask an Elder</div>
+      <h2 id="prompts-heading" class="section-title">Spark a Forgotten Memory</h2>
+      <p class="section-intro">Sometimes the most breathtaking stories need just a gentle question to unravel. Read one to them while recording:</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card" tabindex="0" role="button" aria-label="Use prompt: The Monsoons of Childhood">
+          <span class="prompt-theme">🌧️ Childhood &bull; Weather</span>
+          <h3 class="prompt-q">"Tell me about the heaviest rains you saw as a child. What did the courtyard smell like?"</h3>
+          <p class="prompt-sub">Prompts vivid sensory details of old tiled roofs, mud scents, and rain snacks.</p>
+          <span class="prompt-tap-hint">Click to copy prompt &rarr;</span>
+        </article>
+
+        <article class="prompt-card" tabindex="0" role="button" aria-label="Use prompt: The Kitchen Heirloom Recipe">
+          <span class="prompt-theme">🍲 Heritage &bull; Food</span>
+          <h3 class="prompt-q">"Which dish made by your mother or grandmother is never made the same way today?"</h3>
+          <p class="prompt-sub">Unlocks heirloom spices, slow brass pots, festival rituals, and lost tastes.</p>
+          <span class="prompt-tap-hint">Click to copy prompt &rarr;</span>
+        </article>
+
+        <article class="prompt-card" tabindex="0" role="button" aria-label="Use prompt: The First Journey">
+          <span class="prompt-theme">🚂 Journey &bull; Youth</span>
+          <h3 class="prompt-q">"Do you remember the first time you stepped onto a train to leave your hometown?"</h3>
+          <p class="prompt-sub">Brings forward courage, parting goodbyes, steam engines, and new cities.</p>
+          <span class="prompt-tap-hint">Click to copy prompt &rarr;</span>
+        </article>
+
+        <article class="prompt-card" tabindex="0" role="button" aria-label="Use prompt: Old Melodies & Radios">
+          <span class="prompt-theme">📻 Music &bull; Evening</span>
+          <h3 class="prompt-q">"What songs played on the Murphy radio when the evening fell across your street?"</h3>
+          <p class="prompt-sub">Evokes Lata Mangeshkar, Begum Akhtar, Mehdi Hassan, or old folk lullabies.</p>
+          <span class="prompt-tap-hint">Click to copy prompt &rarr;</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Heirloom Result Section -->
+    <section class="result" id="result" aria-labelledby="result-title" hidden>
+      <div class="result-head">
+        <div class="result-badge-flair">
+          <span class="thread-knot">🧵</span>
+          <span>Heirloom Card Woven</span>
+        </div>
+        <h2 id="result-title" class="result-main-title">A Memory Preserved Across Time</h2>
+        <p class="result-sub-title">Your elder's spoken voice woven into heirloom English prose. Cherish, print, or share with family.</p>
+      </div>
+
+      <!-- Card Customizer Toolbar -->
+      <div class="card-controls-bar">
+        <div class="card-theme-selector" role="radiogroup" aria-label="Card aesthetic theme">
+          <span class="controls-label">Card Style:</span>
+          <button type="button" class="style-pill active" data-card-theme="parchment" aria-checked="true" role="radio">
+            <span class="swatch swatch-parchment"></span> Parchment
+          </button>
+          <button type="button" class="style-pill" data-card-theme="indigo" aria-checked="false" role="radio">
+            <span class="swatch swatch-indigo"></span> Royal Indigo
+          </button>
+          <button type="button" class="style-pill" data-card-theme="terracotta" aria-checked="false" role="radio">
+            <span class="swatch swatch-terracotta"></span> Terracotta
+          </button>
+        </div>
+
+        <div class="card-view-toggle" role="tablist" aria-label="Toggle story language view">
+          <button type="button" class="view-btn active" id="viewBtnEnglish" role="tab" aria-selected="true">English Story</button>
+          <button type="button" class="view-btn" id="viewBtnDual" role="tab" aria-selected="false">Side-by-Side Dual</button>
+          <button type="button" class="view-btn" id="viewBtnOriginal" role="tab" aria-selected="false">Original Script</button>
+        </div>
+      </div>
+
+      <!-- The Masterpiece Story Card -->
+      <div class="story-card-wrapper">
+        <article class="story-card" id="storyCard" data-card-style="parchment">
+          <!-- Card Decorative Corner Borders (Heritage Jaali Motif) -->
+          <div class="card-border-ornament ornament-tl" aria-hidden="true"></div>
+          <div class="card-border-ornament ornament-tr" aria-hidden="true"></div>
+          <div class="card-border-ornament ornament-bl" aria-hidden="true"></div>
+          <div class="card-border-ornament ornament-br" aria-hidden="true"></div>
+
+          <div class="card-inner-frame">
+            <!-- Card Header Metadata -->
+            <div class="story-meta-header">
+              <div class="story-kicker-group">
+                <span class="story-kicker">Family Oral Archive</span>
+                <span class="meta-dot">&bull;</span>
+                <span class="story-date" id="storyDate">Today</span>
+              </div>
+              <div class="story-seal" aria-hidden="true">
+                <span class="seal-ring">धागा</span>
+              </div>
+            </div>
+
+            <!-- Big Decorative Quote Glyph -->
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+
+            <!-- Story Title -->
+            <h3 class="story-title" id="storyTitle">Untitled memory</h3>
+
+            <!-- Dual View Grid Container -->
+            <div class="story-content-grid" id="storyContentGrid">
+              <!-- English Story Column -->
+              <div class="story-col story-col-english" id="colEnglish">
+                <div class="col-badge">English Translation</div>
+                <p class="story-body" id="storyBody"></p>
+              </div>
+
+              <!-- Original Words Column -->
+              <div class="story-col story-col-original" id="colOriginal">
+                <div class="col-badge">Original Spoken Cadence</div>
+                <p id="transcriptText" class="transcript" dir="auto"></p>
+              </div>
+            </div>
+
+            <!-- Card Bottom Signature & Attribution -->
+            <div class="story-footer-row">
+              <div class="story-signature">
+                <span class="sign-thread" aria-hidden="true"></span>
+                <span class="sign-text">Woven with <strong>Dhaaga</strong> &bull; An eternal thread</span>
+              </div>
+              <div class="story-stt-stamp">
+                <span>Sarvam AI Archive &bull; 2026</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Secondary Action Bar (Copy, Print, Download, Re-record) -->
+      <div class="actions-row">
+        <div class="actions-group">
+          <button id="copyBtn" class="btn btn-ghost" type="button">
+            <span class="btn-ico" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9" height="9" rx="2"/><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/></svg>
+            </span>
+            Copy Story
+          </button>
+
+          <button id="printBtn" class="btn btn-ghost" type="button">
+            <span class="btn-ico" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8V3h8v5"/><rect x="3" y="8" width="14" height="6" rx="1.5"/><path d="M6 12h8v5H6z"/></svg>
+            </span>
+            Print / Save Archival PDF
+          </button>
+
+          <button id="downloadAudioBtn" class="btn btn-ghost" type="button" title="Save original elder voice recording">
+            <span class="btn-ico" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/><path d="M7 10l3 3 3-3"/><path d="M10 3v10"/></svg>
+            </span>
+            Download Voice
+          </button>
+        </div>
+
+        <button id="resetBtn" class="btn btn-primary-quiet" type="button">
+          <span class="btn-ico" aria-hidden="true">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a6 6 0 1 0 2-4.5"/><path d="M4 3v3h3"/></svg>
+          </span>
+          Preserve Another Memory
+        </button>
+      </div>
+    </section>
+
+    <!-- Sample Heirloom Showcase Section -->
+    <section class="samples-section" id="samples" aria-labelledby="samples-heading">
+      <div class="section-badge">Gallery of Woven Memories</div>
+      <h2 id="samples-heading" class="section-title">Stories Kept Safe for Tomorrow</h2>
+      <p class="section-intro">Explore examples of oral narratives transcribed and translated into keepsake cards:</p>
+
+      <div class="samples-grid">
+        <!-- Sample 1: Kashmiri -->
+        <article class="sample-card" data-sample="kashmiri">
+          <div class="sample-tag-row">
+            <span class="sample-lang-pill">کٲشُر Kashmiri</span>
+            <span class="sample-location">Srinagar, 1954</span>
+          </div>
+          <h3 class="sample-title">The First Frost on the Chinars</h3>
+          <p class="sample-excerpt">
+            "When the autumn turned golden, baba would kindle the kangri with dried apple coals. In the morning, Dal lake wore a veil of steam so thick you could only hear the boatman's oar splashing..."
+          </p>
+          <div class="sample-footer">
+            <span class="sample-author">— Asmat Begum (Nani, 82)</span>
+            <button type="button" class="btn-sample-load" data-sample-id="kashmiri">Preview Card &rarr;</button>
+          </div>
+        </article>
+
+        <!-- Sample 2: Hindi -->
+        <article class="sample-card" data-sample="hindi">
+          <div class="sample-tag-row">
+            <span class="sample-lang-pill">हिन्दी Hindi</span>
+            <span class="sample-location">Old Delhi, 1968</span>
+          </div>
+          <h3 class="sample-title">The Copper Kettle of Ballimaran</h3>
+          <p class="sample-excerpt">
+            "Dada bought that heavy copper kettle right after the monsoon. Every morning at five, cardamom and crushed ginger simmered on the stove while the street slowly woke to pigeon wings..."
+          </p>
+          <div class="sample-footer">
+            <span class="sample-author">— Pandit Rameshwar (Dada, 88)</span>
+            <button type="button" class="btn-sample-load" data-sample-id="hindi">Preview Card &rarr;</button>
+          </div>
+        </article>
+
+        <!-- Sample 3: Urdu -->
+        <article class="sample-card" data-sample="urdu">
+          <div class="sample-tag-row">
+            <span class="sample-lang-pill">اردو Urdu</span>
+            <span class="sample-location">Lucknow, 1961</span>
+          </div>
+          <h3 class="sample-title">The Jasmine Plant in the Courtyard</h3>
+          <p class="sample-excerpt">
+            "Ammi would water the raatrani with water left from boiled chickpeas. At night, when the ceiling fans hummed slow, the whole courtyard smelled so sweet you did not need words to sleep..."
+          </p>
+          <div class="sample-footer">
+            <span class="sample-author">— Farida Khatun (Dadi, 79)</span>
+            <button type="button" class="btn-sample-load" data-sample-id="urdu">Preview Card &rarr;</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- How It Works Section (Visual Infographic) -->
+    <section class="how-it-works-section">
+      <div class="section-badge">Behind the Weaving</div>
+      <h2 class="section-title">How Dhaaga Protects Family Heritage</h2>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon-bubble">1</div>
+          <h3>Record Naturally</h3>
+          <p>Elders don't need to read or type. Simply hold your phone near them as they share an experience in their dialect.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon-bubble">2</div>
+          <h3>Sarvam Saaras STT</h3>
+          <p>Advanced speech recognition crafted natively for Indian languages captures regional phonetics and emotions accurately.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon-bubble">3</div>
+          <h3>Sarvam Translate</h3>
+          <p>Transmutes spoken dialect into warm, dignified English storytelling while preserving regional authenticity.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon-bubble">4</div>
+          <h3>Heirloom Artifact</h3>
+          <p>Generates an archival card you can print, frame, store in albums, or bind into family memory volumes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Redesigned Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name">धागा &bull; Dhaaga</span>
+          <p class="footer-desc">A bridge of memory between generations. Dedicated to preserving oral histories from grandmothers, grandfathers, and ancestors across India.</p>
+        </div>
+        <div class="footer-tech">
+          <span class="tech-tag">Powered by Sarvam AI</span>
+          <p class="tech-detail">Speech recognition via <code>saaras:v3</code> &bull; Neural translation via <code>sarvam-translate:v1</code></p>
+        </div>
+      </div>
+
+      <div class="footer-thread-divider" aria-hidden="true"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Dhaaga Archive. Crafted with deep reverence for family stories.</p>
+        <p class="footer-privacy">Private by design &bull; Audio processed in ephemeral memory only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
